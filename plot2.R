@@ -5,4 +5,4 @@ data_plot <- data.frame(Time = strptime(paste(data_power$Date,data_power$Time, s
 plot(data_plot$Time, data_plot$Gobal_active_power,type="n",ylab="Global Active Power (kilowatts)", xlab = "")
 lines(data_plot$Time, data_plot$Gobal_active_power)
 dev.copy(png, file = "plot2.png")
-dev.off()datadev
+dev.off()
