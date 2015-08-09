@@ -2,7 +2,7 @@ data_whole <- read.table("household_power_consumption.txt", sep = ";", header = 
 data_whole$Date <- as.Date(data_whole$Date, "%d/%m/%Y")
 data_whole$Time <- strptime(data_whole$Time, "%H:%M:%S")
 data_power <- subset(data_whole, data_whole$Date == c("2007-02-01", "2007-02-02"))
-data_plot <- data.frame(Time = as.POSIXlt(paste(data_power$Date,data_power$Time, sep=""), "%d-%m-%Y %h:%m:%s"), Sub_metering_1 = data_power$Sub_metering_1, Sub_metering_2 = data_power$Sub_metering_2, Sub_metering_3 = data_power$Sub_metering_3)
+data_plot <- data.frame(Time = strptime(paste(data_power$Date,data_power$Time, sep=" "), format = "%Y-%m-%d %H:%M:%S"), Sub_metering_1 = data_power$Sub_metering_1, Sub_metering_2 = data_power$Sub_metering_2, Sub_metering_3 = data_power$Sub_metering_3)
 plot(data_plot$Time, data_plot$Sub_metering_1,type="n",ylab="Energy sub metering", xlab = "")
 lines(data_plot$Time, data_plot$Sub_metering_1)
 lines(data_plot$Time, data_plot$Sub_metering_2, col = "red")
